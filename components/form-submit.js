@@ -4,7 +4,7 @@ import { useFormStatus } from 'react-dom';
 export default function FormSubmit() {
   const { pending } = useFormStatus();
 
-  if (pending) { return <p>Submitting...</p> }
+  if (pending) { return (<span>Submitting...</span>); }
 
   return <>
     <button disabled={pending} type="reset">Reset</button>
