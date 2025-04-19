@@ -3,6 +3,7 @@ import FormSubmit from '@/components/form-submit';
 import { useActionState } from 'react';
 import { useFormState } from 'react-dom';
 import { createPost } from '@/actions/create-post';
+import Image from 'next/image';
 
 export default function NewPostPage() {
   // const [state, formAction] = useActionState(addToCart, {});
@@ -18,7 +19,7 @@ export default function NewPostPage() {
           <input type="text" id="title" name="title" required />
         </p>
         <p className="form-control">
-          <label htmlFor="image">Image URL</label>
+          <label htmlFor="image">Image</label>
           <input
             type="file"
             accept="image/png, image/jpeg"
@@ -37,6 +38,8 @@ export default function NewPostPage() {
           {state.errors.map(error => <li key={error}>{error}</li>)}
         </ul>}
       </form>
+      {/* <Image src="https://jb-default-bucket.s3.amazonaws.com/images/burger.jpg" alt="image" fill/> */}
+      <Image src="https://jb-default-bucket.s3.amazonaws.com/images/nivell.jpg" alt="image" width={100} height={100}/>
     </>
   );
 }

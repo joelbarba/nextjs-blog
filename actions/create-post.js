@@ -1,6 +1,8 @@
 "use server";
 import { storePost } from '@/lib/posts';
 import { redirect } from 'next/navigation';
+import slugify from 'slugify';
+import { saveImage } from '@/lib/aws-bucket';
 
 export async function createPost(prevState, formData) {
   console.log('createPost ----> ', formData);
@@ -16,8 +18,12 @@ export async function createPost(prevState, formData) {
 
   if (errors.length) { return { errors }; }
 
+  const extension = image.name.split('.').pop();
+  const imageUrl = `${slugify(title, { lower: true })}.${extension}`;
+  await saveImage(image, imageUrl);
+
   await storePost({
-    imageUrl: '',
+    imageUrl,
     title,
     content,
     userId: 1
