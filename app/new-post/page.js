@@ -2,7 +2,7 @@
 import FormSubmit from '@/components/form-submit';
 import { useActionState } from 'react';
 import { useFormState } from 'react-dom';
-import { createPost } from '@/actions/create-post';
+import { createPost } from '@/lib/server-actions';
 import Image from 'next/image';
 
 export default function NewPostPage() {
