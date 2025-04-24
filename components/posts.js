@@ -6,10 +6,19 @@ import { togglePostLikeStatus } from '@/lib/server-actions';
 import { useOptimistic } from 'react';
 
 function Post({ post, action }) {
+  const imageUrl = post.imageUrl ? `https://jb-default-bucket.s3.amazonaws.com/images/${post.imageUrl}` : null;
+
+  function imageLoder(config) {
+    console.log(config); // Returns all attributes of the html tag Image
+    return config.src;
+  }
+
   return (
     <article className="post">
-      <div className="post-image">
-        { post.imageUrl && <Image src={`https://jb-default-bucket.s3.amazonaws.com/images/${post.imageUrl}`} alt="image" width={100} height={100}/>}
+      <div className="post-image" style={{ position: 'relative', width: '8em', height: '8em' }}>
+        {/* { post.imageUrl && <Image src={imageUrl} alt="image" width={100} height={100}/>} */}
+        {/* { post.imageUrl && <Image src={imageUrl} alt="image" fill/>} */}
+        { post.imageUrl && <Image src={imageUrl} alt="image" loader={imageLoder} fill/>}
       </div>
       <div className="post-content">
         <header>

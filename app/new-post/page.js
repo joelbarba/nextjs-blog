@@ -39,7 +39,7 @@ export default function NewPostPage() {
         </ul>}
       </form>
       {/* <Image src="https://jb-default-bucket.s3.amazonaws.com/images/burger.jpg" alt="image" fill/> */}
-      <Image src="https://jb-default-bucket.s3.amazonaws.com/images/nivell.jpg" alt="image" width={100} height={100}/>
+      {/* <Image src="https://jb-default-bucket.s3.amazonaws.com/images/nivell.jpg" alt="image" width={100} height={100}/> */}
     </>
   );
 }
